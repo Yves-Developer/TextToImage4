@@ -4,41 +4,125 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Text to Image Generator</title>
   <style>
-    #prompt{
-      width: 200px;
-      height: 25px;
-      border-radius: 6px;
-      border: 3px solid rgb(167, 1, 1);
-      box-shadow: 0 3px 4px rgba(159, 0, 0, 0.571);
-      color: #081b29;
-      background: #fff;
-      padding: 5px;
-      font-size: 17px;
-      font-family: sans-serif;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: auto;
+      margin: 0;
     }
-    #btn{
-      width: max-content;
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 700px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .status-message {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    #prompt {
+      width: calc(100% - 20px);
       height: 40px;
-      padding: 12px;
-      background: rgb(167, 1, 1);
+      border-radius: 6px;
+      border: 2px solid #e63946;
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+      color: #333;
+      background: #fff;
+      padding: 0 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    #btn {
+      padding: 12px 24px;
+      background: #e63946;
       color: #fff;
       border-radius: 8px;
       border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
-    #img{
-      width: 500px;
-      height: 500px;
-      object-fit: cover;
+
+    #btn:hover {
+      background: #d62839;
+    }
+
+    #img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+      display: none; /* Hide the image initially */
+    }
+
+    /* Circle loader styles */
+    .loader {
+      border: 12px solid #f3f3f3; /* Light grey */
+      border-top: 12px solid #e63946; /* Red */
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+      display: none; /* Hide loader initially */
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Download button styles */
+    #downloadBtn {
+      padding: 12px 24px;
+      background: #1d3557;
+      color: #fff;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: none; /* Hide the button initially */
+      margin-top: 20px;
+    }
+
+    #downloadBtn:hover {
+      background: #457b9d;
     }
   </style>
 </head>
 <body>
-  <input type="text" name="" id="prompt">
-  <button id="btn">Generate</button><br><br>
-  <img src="" alt="" id="img">
-  
+  <div class="container">
+    <h1>Text to Image Generator</h1>
+    <p class="status-message" id="statusMessage">Enter your text and click "Generate" to get your image.</p>
+    <input type="text" id="prompt" placeholder="Enter text here...">
+    <button id="btn">Generate</button>
+    <div class="loader" id="loader"></div> <!-- Circle loader -->
+    <img src="" alt="Generated Image" id="img"> <!-- Image to be displayed after loading -->
+    <a id="downloadBtn" download="generated-image.png">Download Image</a> <!-- Download button -->
+  </div>
+
   <script src="./magic.js"></script>
 </body>
 </html>
