@@ -8,9 +8,10 @@ This project simply request Data from live text2image api model.
 4. XHR
 5. Text2Image Model API
 
-## 80% Of My Projects Are `Private` On Github.
+## Explore on Portfolio.
 
 You can Browse and Explore All of my projects on my Portfolio Website.
 
 ### Portfolio: [Link](https://yvesdc.vercel.app)
+
 
